@@ -1,0 +1,11 @@
+<div class="progress">
+  <div
+    [class]="'progress-bar bg-' + color()"
+    [class.progress-bar-striped]="striped()"
+    [style.width.%]="value()"
+  >
+    @if (showText()) {
+      {{ value() }}%
+    }
+  </div>
+</div>

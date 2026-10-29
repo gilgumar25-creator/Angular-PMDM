@@ -1,0 +1,44 @@
+<div class="container mt-4">
+  <h3>Barra modificable</h3>
+  <app-custom-progress-bar
+    [value]="progreso()"
+    [color]="colorElegido()"
+    [showText]="true"
+  />
+
+  <!-- Botones -->
+  <div class="mt-3">
+    <button class="btn btn-danger me-2" (click)="bajar()">-10</button>
+    <button class="btn btn-success me-2" (click)="subir()">+10</button>
+    <button class="btn btn-dark" (click)="reiniciar()">Reiniciar</button>
+  </div>
+
+  <!-- Control del color -->
+  <label class="form-label mt-4">Color</label>
+  <select
+    #selector
+    class="form-select"
+    (change)="colorElegido.set(selector.value)"
+  >
+    @for (c of colores; track c) {
+      <option [value]="c" [selected]="c === colorElegido()">{{ c }}</option>
+    }
+  </select>
+</div>
+
+<div class="container mt-4">
+
+  <h3 class="mt-4">Con texto</h3>
+  <app-custom-progress-bar [value]="60" color="success" [showText]="true" />
+
+  <h3 class="mt-4">Striped</h3>
+  <app-custom-progress-bar [value]="80" color="warning" [striped]="true" />
+
+  <h3 class="mt-4">Todo junto</h3>
+  <app-custom-progress-bar
+    [value]="45"
+    color="danger"
+    [striped]="true"
+    [showText]="true"
+  />
+</div>

@@ -1,1 +1,20 @@
-<p>character-modal works!</p>
+<div class="modal-header bg-dark border-danger">
+    <h4 class="modal-title text-danger">Detalles del star war</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body bg-danger">
+
+    <p class="text-white strong">Character: {{ characterDetail?.name }}!</p>
+    <p class="text-white strong">Height: {{ characterDetail?.height}}</p>
+    <p class="text-white strong">Masass: {{ characterDetail?.mass}}</p>
+    <p class="text-white strong">ColordePelo: {{ characterDetail?.hair_color}}</p>
+    <p class="text-white strong">ColordePiel: {{ characterDetail?.skin_color}}</p>
+    <p class="text-white strong">ColordeOjos: {{ characterDetail?.eye_color}}</p>
+    <p class="text-white strong">Born in: {{ characterDetail?.birth_year}}</p>
+    <p class="text-white strong">Gender: {{ characterDetail?.gender}}</p>
+    <p class="text-white strong">Lugar de origen: {{ characterDetail?.homeworld}}</p>
+
+</div>
+<div class="modal-footer bg-dark border-danger">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close()">Close</button>
+</div>

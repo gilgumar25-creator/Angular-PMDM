@@ -1,0 +1,20 @@
+
+<div class="bg-dark min-vh-100 py-4">
+  <div class="container">
+
+    <h1 class="text-center text-warning fw-bold mb-4">
+      LISTA DE COCHES
+    </h1>
+
+    <div class="row">
+      @for (veh of vehicleList(); track veh.name) {
+        <div class="col">
+          <app-vehicle-item-component
+            [vehicle]="veh"
+            (vehicleClicked)="openVehicleModal($event)" />
+        </div>
+      }
+    </div>
+
+  </div>
+</div>

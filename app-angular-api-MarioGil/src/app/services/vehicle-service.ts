@@ -1,0 +1,29 @@
+import { Service, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http'; 
+import { Observable } from 'rxjs'
+import { VehicleListResponse } from '../interfaces/vehicle-list-response' 
+import { VehicleDetailResponse } from '../interfaces/vehicle-detail-response' 
+
+
+@Service()
+export class VehicleService {
+
+    private http = inject(HttpClient);
+
+
+    getAll(): Observable<VehicleListResponse> {
+
+        return this.http.get<VehicleListResponse>(`https://swapi.dev/api/vehicle`);
+       
+    }
+
+    getOne(id: string): Observable<VehicleDetailResponse> {
+
+        return this.http.get<VehicleDetailResponse>(`https://swapi.dev/api/vehicle/${id}`);
+
+
+    }
+
+
+
+}

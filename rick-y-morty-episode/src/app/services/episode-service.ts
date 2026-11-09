@@ -1,0 +1,24 @@
+import { Service, inject } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http'
+import { EpisodeDetailResponse } from '../interfaces/episode-detail-response'
+import { EpisodeListResponse } from '../interfaces/episode-list-response'
+
+@Service()
+export class EpisodeService {
+
+    http = inject(HttpClient);
+
+    getAll(): Observable<EpisodeListResponse> {
+
+        return this.http.get<EpisodeListResponse>("https://rickandmortyapi.com/api/episode")
+
+    }
+
+    getOne(id : string): Observable<EpisodeDetailResponse> {
+
+        return this.http.get<EpisodeDetailResponse>(`https://rickandmortyapi.com/api/episode/${id}`)
+
+    }
+
+}

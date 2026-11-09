@@ -1,0 +1,67 @@
+<div class="bg-dark text-light min-vh-100 py-5">
+  <div class="container" style="max-width: 600px">
+
+    <h2 class="text-warning mb-4">Nueva publicación</h2>
+
+    <div class="mb-3">
+      <label class="form-label">Título</label>
+      <input type="text" class="form-control" [formControl]="title" />
+      @if (title.invalid && title.touched) {
+        <small class="text-danger">El título es obligatorio.</small>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Descripción</label>
+      <textarea class="form-control" rows="4" [formControl]="description"></textarea>
+      @if (description.invalid && description.touched) {
+        <small class="text-danger">La descripción es obligatoria.</small>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Categoría</label>
+      <select class="form-select" [formControl]="category">
+        <option value="">Selecciona una categoría</option>
+        @for (c of categorias; track c) {
+          <option [value]="c">{{ c }}</option>
+        }
+      </select>
+      @if (category.invalid && category.touched) {
+        <small class="text-danger">Debes elegir una categoría.</small>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Etiquetas (separadas por comas)</label>
+      <input type="text" class="form-control" [formControl]="tags" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email del autor</label>
+      <input type="email" class="form-control" [formControl]="email" />
+      @if (email.invalid && email.touched) {
+        <small class="text-danger">El email es obligatorio.</small>
+      }
+    </div>
+
+    <div class="form-check mb-3">
+      <input type="checkbox" class="form-check-input" id="publishNow" [formControl]="publishNow" />
+      <label class="form-check-label" for="publishNow">Publicar ahora</label>
+    </div>
+
+    @if (!publishNow.value) {
+      <div class="mb-3">
+        <label class="form-label">Fecha de publicación</label>
+        <div class="input-group">
+          <input class="form-control" placeholder="aaaa-mm-dd"
+                 ngbDatepicker #d="ngbDatepicker" [formControl]="publishDate" />
+          <button class="btn btn-warning" type="button" (click)="d.toggle()">📅</button>
+        </div>
+      </div>
+    }
+
+    <button type="button" class="btn btn-warning w-100" (click)="guardar()">Guardar</button>
+
+  </div>
+</div>

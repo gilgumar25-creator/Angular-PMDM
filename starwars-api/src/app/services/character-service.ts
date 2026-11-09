@@ -17,7 +17,6 @@ export class CharacterService {
 
     getOne(id: string): Observable <CharacterDetailResponse>{
 
-        // ✅ backticks y ${id}
         return this.http.get<CharacterDetailResponse>(`https://swapi.dev/api/people/${id}`)
     }
 

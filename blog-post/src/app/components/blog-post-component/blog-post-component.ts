@@ -11,17 +11,19 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class BlogPostComponent {
 
-  BlogPostControl = new FormGroup('');
+  blogPost = new FormGroup({
 
   categorias = ['Tecnología', 'Diseño', 'Programación', 'Novedades'];
 
-  title = new FormControl('', [Validators.required]);
-  description = new FormControl('', [Validators.required]);
-  category = new FormControl('', Validators.required);
-  tags = new FormControl('');
-  email = new FormControl('', [Validators.required]);
-  publishNow = new FormControl(true);
-  publishDate = new FormControl(null);
+  title = new FormControl('', [Validators.required]),
+  description = new FormControl('', [Validators.required]),
+  category = new FormControl('', Validators.required),
+  tags = new FormControl(''),
+  email = new FormControl('', [Validators.required]),
+  publishNow = new FormControl(true),
+  publishDate = new FormControl(null),
+
+  });
 
   guardar() {
 
@@ -35,4 +37,4 @@ export class BlogPostComponent {
   }
 
 
-}
+

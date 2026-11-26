@@ -1,0 +1,28 @@
+<div class="container vh-100 overflow-auto py-3">
+  <h1 class="h4 mb-3 sticky-top bg-white py-2">Películas populares</h1>
+
+  @if (cargando()) {
+    <div class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+    </div>
+  } @else if (error()) {
+    <div class="alert alert-danger">{{ error() }}</div>
+  } @else {
+    <ul class="list-group">
+      @for (pelicula of peliculas(); track pelicula.id) {
+        <li class="list-group-item d-flex align-items-center gap-3">
+          @if (pelicula.poster_path) {
+            <img [src]="urlImagen + pelicula.poster_path" [alt]="pelicula.title" class="img-thumbnail">
+          }
+          <div class="flex-grow-1">
+            <h2 class="h6 mb-1">{{ pelicula.title }}</h2>
+            <small class="text-muted">{{ pelicula.release_date }}</small>
+          </div>
+          <span class="badge text-bg-primary">{{ pelicula.vote_average }}</span>
+        </li>
+      }
+    </ul>
+  }
+</div>
